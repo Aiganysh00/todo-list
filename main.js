@@ -26,11 +26,7 @@ const addItemTodoList = () => {
             </li>
         `
     })
-    if (tasks.length !== 0){
-        todoNull.style.display = 'none'
-    } else{
-        todoNull.style.display = 'block'
-    }
+
 
     const todoChecked=document.querySelectorAll('.todoChecked')
     Array.from(todoChecked).forEach(item =>{
