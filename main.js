@@ -5,6 +5,7 @@ let todoForm = document.querySelector('.todo_form')
 let todoField = document.querySelector('.todo_field')
 let todoError = document.querySelector('.todo_error')
 let todoRemoveAll = document.querySelector('.todo_remove')
+let todoNull=document.querySelector('.todo_null')
 
 const addItemTodoList = () => {
     todolist.innerHTML = ''
@@ -28,7 +29,11 @@ const addItemTodoList = () => {
         `
     })
 
-
+    if (tasks.length !== 0){
+        todoNull.style.display = 'none'
+    } else{
+        todoNull.style.display = 'block'
+    }
 
     const todoChecked = document.querySelectorAll('.todo_checked')
     Array.from(todoChecked).forEach(item => {
