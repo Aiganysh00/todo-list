@@ -4,6 +4,7 @@ let todolist = document.querySelector('.todo_list')
 let todoForm = document.querySelector('.todo_form')
 let todoField = document.querySelector('.todo_field')
 let todoError = document.querySelector('.todo_error')
+let todoRemoveAll = document.querySelector('.todo_remove')
 
 const addItemTodoList = () => {
     todolist.innerHTML = ''
@@ -28,33 +29,35 @@ const addItemTodoList = () => {
     })
 
 
-    const todoChecked=document.querySelectorAll('.todoChecked')
-    Array.from(todoChecked).forEach(item =>{
-        item.addEventListener("change", () =>{
-            tasks=tasks.map(el=>{
-                if (el.id== item.dataset.id){
-                    return {...el, isDone: !el.isDone }
+
+    const todoChecked = document.querySelectorAll('.todo_checked')
+    Array.from(todoChecked).forEach(item => {
+        item.addEventListener("change", () => {
+            tasks = tasks.map(el => {
+                if (el.id == item.dataset.id) {
+                    return {...el, isDone: !el.isDone}
                 }
                 return el
             })
-          addItemTodoList()
-            localStorage.setItem('tasks',JSON.stringify(tasks))
+            addItemTodoList()
+            localStorage.setItem('tasks', JSON.stringify(tasks))
         })
     })
 
     const todoStar = document.querySelectorAll(".todo_item-star")
 
-    Array.from(todoStar).forEach(item =>{
-     item.addEventListener('click', ()=>{
-         tasks=tasks.map(el =>{
-             if (el.id == item.dataset.id){
-                 return {...el, isImportant: !el.isImportant}
-             }
-             return el
-         })
-         addItemTodoList()
-         localStorage.setItem('tasks',JSON.stringify(tasks))
-     })
+    Array.from(todoStar).forEach(item => {
+        item.addEventListener('click', () => {
+
+            tasks = tasks.map(el => {
+                if (el.id == item.dataset.id) {
+                    return {...el, isImportant: !el.isImportant}
+                }
+                return el
+            })
+            addItemTodoList()
+            localStorage.setItem('tasks', JSON.stringify(tasks))
+        })
     })
 
     const todoItemDel = document.querySelectorAll('.todo_item-del')
@@ -64,7 +67,7 @@ const addItemTodoList = () => {
                 return el.id != item.dataset.id
             })
             addItemTodoList()
-            localStorage.setItem('tasks',JSON.stringify(tasks))
+            localStorage.setItem('tasks', JSON.stringify(tasks))
         })
     })
 
@@ -90,9 +93,9 @@ todoForm.addEventListener('submit', (event) => {
         event.target[0].value = ''
     }
 })
- todoRemoveAll.addEventListener("click", ()=>{
-     tasks.remove(tasks)
- })
+todoRemoveAll.addEventListener("click", () => {
+    tasks.remove(tasks)
+})
 
 todoField.addEventListener('input', (e) => {
     if (tasks.some(el => el.text.toUpperCase() === e.target.value.toUpperCase())) {

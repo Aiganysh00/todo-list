@@ -112,3 +112,12 @@
     column-gap: 30px;
     align-items: center;
 }
+
+.todo_remove{
+    padding: 12px 22px ;
+    cursor: pointer;
+    background: red;
+    color: white;
+    font-size: 18px;
+    border-radius: 10px;
+}
